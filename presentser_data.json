@@ -1,0 +1,53 @@
+{
+  "123456": {
+    "present": 6.5,
+    "total": 11,
+    "target": 75,
+    "gender": null,
+    "username": "student101",
+    "first_name": "Fayas"
+  },
+  "Fayas": {
+    "present": 5.0,
+    "total": 6.0,
+    "target": 75.0,
+    "gender": null,
+    "username": "Fayas",
+    "first_name": null
+  },
+  "Shifaa kunjj": {
+    "present": 8.5,
+    "total": 11.0,
+    "gender": "female",
+    "target": 90.0
+  },
+  "Shifa": {
+    "present": 8.5,
+    "total": 11.0,
+    "target": 90.0
+  },
+  "fayas_test": {
+    "present": 3.0,
+    "total": 10.0,
+    "target": 75.0,
+    "gender": "male",
+    "username": "fayas_test",
+    "first_name": null
+  },
+  "Fayaxx": {
+    "present": 7.0,
+    "total": 10.0,
+    "target": 75.0,
+    "gender": "male",
+    "username": "Fayaxx",
+    "first_name": null
+  },
+  "Fayaxie": {
+    "present": 6.5,
+    "total": 111.0,
+    "target": 75.0,
+    "gender": "male",
+    "username": "Fayaxie",
+    "first_name": null
+  }
+}

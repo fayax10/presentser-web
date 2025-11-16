@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta name="theme-color" content="#0f0812">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <title>PresentSer</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg">
+  <div class="site-header">
+    <div class="logo-wrap">
+        <img src="/static/logo.png" class="logo" />
+    </div>
+
+
+    <p class="tag">Attendance made chill 😎</p>
+</div>
+    </header>
+
+    <form id="calcForm" class="form">
+      <div class="row">
+        <label>Username (for save)</label>
+        <input id="username" placeholder="optional: your name or id" />
+      </div>
+
+      <div class="row two">
+        <div>
+          <label>Present days</label>
+          <input id="present" inputmode="decimal" placeholder="e.g. 6.5" />
+        </div>
+        <div>
+          <label>Total days</label>
+          <input id="total" inputmode="decimal" placeholder="e.g. 11" />
+        </div>
+      </div>
+
+      <div class="row two">
+        <div>
+          <label>Gender</label>
+          <select id="gender">
+            <option value="">Prefer not to say</option>
+            <option value="male">Male (75%)</option>
+            <option value="female">Female (73%)</option>
+          </select>
+        </div>
+        <div>
+          <label>Custom target % (optional)</label>
+          <input id="target" inputmode="numeric" placeholder="e.g. 80" />
+        </div>
+      </div>
+
+      <div class="row actions">
+        <button id="calcBtn" type="button" class="btn primary">Calculate</button>
+        <button id="resetBtn" type="button" class="btn ghost">Reset</button>
+        <button id="shareBtn" type="button" class="btn share-btn">Share</button>
+      </div>
+    </form>
+
+    <div id="result" class="result hidden">
+      <div id="statusBox" class="statusBox"></div>
+      <div class="grid">
+        <div class="tile">
+          <div class="tile-title">Current %</div>
+          <div id="curPct" class="big">—</div>
+        </div>
+        <div class="tile">
+          <div class="tile-title">Days to reach target</div>
+          <div id="reqDays" class="big">—</div>
+        </div>
+        <div class="tile">
+          <div class="tile-title">Bunk-O-Meter</div>
+          <div id="bunkDays" class="big">—</div>
+        </div>
+        <div class="tile">
+          <div class="tile-title">Quip</div>
+          <div id="quip" class="big small">—</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <a class="donate" id="donateBtn" href="#" target="_blank"> Donate ☺️</a>
+      <div class="about">Built by Fayas • Simple, fast, student-first.</div>
+    </footer>
+  </div>
+ <!-- SHARE BUTTON (place next to Donate button) -->
+
+
+<!-- Bottom sheet / dialog -->
+<div id="shareSheet" class="share-sheet hidden" aria-hidden="true">
+  <div id="sheetBackdrop" class="sheet-backdrop"></div>
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h3>Share PresentSer</h3>
+    <p class="sheet-sub">Share your attendance result or the app link</p>
+
+    <div class="sheet-actions">
+      <button id="shareLink" class="sheet-btn">🔗 Share Link</button>
+      <button id="shareText" class="sheet-btn">📝 Share Result Text</button>
+      <button id="shareImage" class="sheet-btn">🖼️ Share Image</button>
+      <button id="downloadImage" class="sheet-btn">⬇️ Download Image</button>
+      <button id="copyLink" class="sheet-btn">📋 Copy Link</button>
+    </div>
+
+    <button id="sheetClose" class="sheet-close">Cancel</button>
+  </div>
+</div>
+
+<!-- optional: html2canvas for image snapshot (CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</div>
+
+<!-- Toast -->
+<div id="shareToast" class="toast hidden"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const show = el => el.classList.remove('hidden');
+const hide = el => el.classList.add('hidden');
+
+async function calc() {
+  const present = $('present').value.trim();
+  const total = $('total').value.trim();
+  const gender = $('gender').value;
+  const target = $('target').value.trim();
+  if (!present || !total) {
+    alert("Enter present and total days.");
+    return;
+  }
+  const body = { present, total, gender };
+  if (target) body.target = target;
+
+  const res = await fetch('/api/calc', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(body)
+  });
+  const data = await res.json();
+  if (!data.ok) {
+    alert(data.error || 'Error');
+    return;
+  }
+  $('curPct').textContent = data.current_pct + '%';
+  $('reqDays').textContent = (data.required_future_days === 0 ? 'Already at/above' : (data.required_future_days === null ? 'Not possible' : data.required_future_days + ' day(s)'));
+  $('bunkDays').textContent = data.bunkable_days + ' day(s)';
+  $('quip').textContent = data.quip;
+  $('statusBox').textContent = `Target used: ${data.target_pct}% — (${data.present} / ${data.total})`;
+  show($('result'));
+}
+
+async function saveRec() {
+  const username = $('username').value.trim();
+  if (!username) {
+    if (!confirm('No username given — will save under "guest". Continue?')) return;
+  }
+  const present = $('present').value.trim();
+  const total = $('total').value.trim();
+  const gender = $('gender').value;
+  const target = $('target').value.trim();
+  if (!present || !total) { alert('Enter present and total to save.'); return; }
+  const body = { username: username || 'guest', present, total, gender };
+  if (target) body.target = target;
+  const res = await fetch('/api/save', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(body)
+  });
+  const data = await res.json();
+  if (data.ok) {
+    alert('Saved ✅ username: ' + data.username);
+  } else {
+    alert('Save failed');
+  }
+}
+
+$('calcBtn').addEventListener('click', calc);
+$('saveBtn').addEventListener('click', saveRec);
+$('resetBtn').addEventListener('click', ()=> { ['present','total','target','username'].forEach(id=>$(id).value=''); hide($('result')); });
+
+/* Donate link - replace with your real link (leave as placeholder) */
+// UPI Donation Link
+  const donateBtn = document.getElementById("donateBtn");
+
+donateBtn.addEventListener("click", function () {
+    const upiUrl =
+      "upi://pay?pa=9544099148@slc&pn=Fayas&cu=INR&am=50&tn=Support%20PresentSer";
+
+    window.location.href = upiUrl;
+});
+</script>
+<script>
+/* Advanced Share (inline) */
+(function () {
+  const shareBtn = document.getElementById("shareBtn");
+  const sheet = document.getElementById("shareSheet");
+  const sheetBackdrop = document.getElementById("sheetBackdrop");
+  const sheetClose = document.getElementById("sheetClose");
+  const shareLinkBtn = document.getElementById("shareLink");
+  const shareTextBtn = document.getElementById("shareText");
+  const shareImageBtn = document.getElementById("shareImage");
+  const downloadImageBtn = document.getElementById("downloadImage");
+  const copyLinkBtn = document.getElementById("copyLink");
+
+  // small toast element (create if missing)
+  let toast = document.getElementById("shareToast");
+  if(!toast){
+    toast = document.createElement("div");
+    toast.id = "shareToast";
+    toast.className = "toast hidden";
+    document.body.appendChild(toast);
+  }
+
+  // Node we want to capture as image (adjust if your result element has other id)
+  const resultNode = document.querySelector(".result") || document.querySelector(".card") || document.body;
+
+  function showToast(msg, ms=1600){
+    toast.textContent = msg;
+    toast.classList.remove("hidden");
+    toast.classList.add("show");
+    setTimeout(()=>{ toast.classList.remove("show"); setTimeout(()=>toast.classList.add("hidden"), 220); }, ms);
+  }
+
+  function openSheet(){ sheet.classList.remove("hidden"); setTimeout(()=> sheet.classList.add("show"), 10); }
+  function closeSheet(){ sheet.classList.remove("show"); setTimeout(()=> sheet.classList.add("hidden"), 240); }
+  if(shareBtn) shareBtn.addEventListener("click", openSheet);
+  if(sheetBackdrop) sheetBackdrop.addEventListener("click", closeSheet);
+  if(sheetClose) sheetClose.addEventListener("click", closeSheet);
+
+  shareLinkBtn && shareLinkBtn.addEventListener("click", async () => {
+    const shareData = { title: "PresentSer — Attendance made chill", text: "Check this out:", url: window.location.href };
+    if (navigator.share) {
+      try { await navigator.share(shareData); }
+      catch(e){ showToast("Share cancelled"); }
+    } else {
+      try { await navigator.clipboard.writeText(window.location.href); showToast("Link copied"); }
+      catch(e){ showToast("Copy failed"); }
+    }
+    closeSheet();
+  });
+
+  shareTextBtn && shareTextBtn.addEventListener("click", async () => {
+    // try to build a human readable result — adjust selectors to your page
+    const pct = document.getElementById("currentPct")?.textContent ?? "";
+    const days = document.getElementById("daysNeeded")?.textContent ?? "";
+    const username = document.getElementById("username")?.value ?? "";
+    const text = `PresentSer result${username ? " — " + username : ""}\nCurrent: ${pct}\nDays to target: ${days}\nTry it: ${window.location.href}`;
+    if (navigator.share) {
+      try { await navigator.share({ title:"My PresentSer result", text, url: window.location.href }); }
+      catch(e){ showToast("Share cancelled"); }
+    } else {
+      try { await navigator.clipboard.writeText(text); showToast("Result copied"); }
+      catch(e){ showToast("Copy failed"); }
+    }
+    closeSheet();
+  });
+
+  // capture image (html2canvas required)
+  async function captureImageNode(node){
+    if (typeof html2canvas === "undefined") throw new Error("html2canvas not loaded");
+    const canvas = await html2canvas(node, { backgroundColor: null, scale: Math.min(2, window.devicePixelRatio || 1) });
+    const blob = await new Promise(res => canvas.toBlob(res, "image/png", 0.92));
+    return blob;
+  }
+
+  shareImageBtn && shareImageBtn.addEventListener("click", async () => {
+    try {
+      const blob = await captureImageNode(resultNode);
+      const file = new File([blob], "presentser-result.png", { type: "image/png" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: "PresentSer result", text: "My attendance snapshot" });
+        showToast("Shared image");
+      } else {
+        const url = URL.createObjectURL(blob);
+        window.open(url, "_blank");
+        showToast("Image opened - long press to save/share");
+      }
+    } catch (err) {
+      console.error(err);
+      showToast("Image share failed");
+    }
+    closeSheet();
+  });
+
+  downloadImageBtn && downloadImageBtn.addEventListener("click", async () => {
+    try {
+      const blob = await captureImageNode(resultNode);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = "presentser-result.png"; document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+      showToast("Downloaded image");
+    } catch (err) {
+      console.error(err);
+      showToast("Download failed");
+    }
+    closeSheet();
+  });
+
+  copyLinkBtn && copyLinkBtn.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(window.location.href); showToast("Link copied"); }
+    catch(e){ showToast("Copy failed"); }
+    closeSheet();
+  });
+
+  // disable image buttons if html2canvas missing
+  window.addEventListener("load", () => {
+    const imageReady = (typeof html2canvas !== "undefined");
+    if (!imageReady) {
+      shareImageBtn && shareImageBtn.setAttribute("disabled", "true");
+      downloadImageBtn && downloadImageBtn.setAttribute("disabled", "true");
+      shareImageBtn && (shareImageBtn.title = "Image capture requires html2canvas");
+      downloadImageBtn && (downloadImageBtn.title = "Image capture requires html2canvas");
+    }
+  });
+})();
+</script>
+<script>
+/* QUICK PRESENTSER ENHANCEMENTS */
+/* Helper */
+const $ = id => document.getElementById(id);
+
+/* Required elements (make sure these IDs exist) */
+const presentEl = $('present');
+const totalEl   = $('total');
+const targetEl  = $('target');
+const calcBtn   = $('calcBtn');
+const currentPctEl = $('currentPct');
+const daysNeededEl = $('daysNeeded');
+const quipEl = $('quip');
+
+/* --- LIVE % ANIMATION --- */
+function animatePercent(toPct, duration = 800) {
+  if (!currentPctEl) return;
+  const from = parseFloat(currentPctEl.dataset.current || 0);
+  const start = performance.now();
+  function frame(now) {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const value = from + (toPct - from) * eased;
+    currentPctEl.textContent = Math.round(value) + "%";
+    if (t < 1) requestAnimationFrame(frame);
+    else currentPctEl.dataset.current = toPct;
+  }
+  requestAnimationFrame(frame);
+}
+
+/* --- HAPTIC FEEDBACK --- */
+function vibe() {
+  if (navigator.vibrate) navigator.vibrate(15);
+}
+
+/* --- AUTOSAVE TO LOCAL STORAGE --- */
+const LS_KEY = "presentser_autosave";
+
+function saveLocal() {
+  localStorage.setItem(
+    LS_KEY,
+    JSON.stringify({
+      present: presentEl.value,
+      total: totalEl.value,
+      target: targetEl.value
+    })
+  );
+}
+
+function restoreLocal() {
+  const saved = localStorage.getItem(LS_KEY);
+  if (!saved) return;
+  const data = JSON.parse(saved);
+  if (presentEl) presentEl.value = data.present || "";
+  if (totalEl) totalEl.value = data.total || "";
+  if (targetEl) targetEl.value = data.target || "";
+}
+
+/* AUTOSAVE: whenever user types */
+[presentEl, totalEl, targetEl].forEach(el => {
+  if (!el) return;
+  el.addEventListener("input", saveLocal);
+});
+
+/* CALCULATE BUTTON BEHAVIOR */
+if (calcBtn) {
+  calcBtn.addEventListener("click", () => {
+    const p = parseFloat(presentEl.value || 0);
+    const t = parseFloat(totalEl.value || 0);
+    const tg = parseFloat(targetEl.value || 75);
+    const pct = t > 0 ? (p/t*100) : 0;
+
+    animatePercent(pct);
+    vibe();
+  });
+}
+
+/* restore previous session */
+window.addEventListener("load", restoreLocal);
+</script>
+<script>
+/*
+  Client-side: call /api/calc to compute and update UI,
+  then POST to /autosave to persist the form to presentser_data.json.
+
+  IMPORTANT: make sure your form fields have these IDs:
+    - username (string)
+    - present  (number)
+    - total    (number)
+    - gender   (string)
+    - target   (number, optional)
+  If your inputs use other IDs, change getElementById(...) below.
+*/
+
+function getFormData() {
+  return {
+    username: document.getElementById('username')?.value?.trim() || '',
+    present: document.getElementById('present')?.value || '',
+    total: document.getElementById('total')?.value || '',
+    gender: document.getElementById('gender')?.value || '',
+    target: document.getElementById('target')?.value || ''
+  };
+}
+
+// Apply calc result to UI — adapt selectors if your result elements use different ids/classes.
+function applyCalcResult(result) {
+  // example: update fields; modify IDs to match your template
+  // if you have specific output areas, change selectors accordingly
+  const targetUsedEl = document.getElementById('targetUsed');
+  const currentPctEl = document.getElementById('currentPct');
+  const daysNeededEl = document.getElementById('daysNeeded');
+  const bunkMeterEl = document.getElementById('bunkMeter');
+  const quipEl = document.getElementById('quip');
+
+  if (targetUsedEl) targetUsedEl.textContent = `Target used: ${result.target_pct}% — (${result.present} / ${result.total})`;
+  if (currentPctEl) currentPctEl.textContent = `${result.current_pct}%`;
+  if (daysNeededEl) daysNeededEl.textContent = result.required_future_days === 0 ? 'Already at/above' : (result.required_future_days === null ? '—' : `${result.required_future_days} day(s)`);
+  if (bunkMeterEl) bunkMeterEl.textContent = `${result.bunkable_days} day(s)`;
+  if (quipEl) quipEl.textContent = result.quip;
+}
+
+async function callApiCalc(form) {
+  try {
+    const res = await fetch('/api/calc', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(form)
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(()=>({error:'calc_failed'}));
+      console.warn('calc error', err);
+      return null;
+    }
+    return await res.json();
+  } catch (e) {
+    console.warn('calc fetch failed', e);
+    return null;
+  }
+}
+
+async function autosave(form) {
+  // send to /autosave (server will write presentser_data.json)
+  try {
+    await fetch('/autosave', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(form)
+    });
+    // silently ignore failures (non-blocking)
+  } catch (e) {
+    console.warn('autosave failed', e);
+  }
+}
+
+// main calculate + autosave flow
+document.getElementById('calcBtn').addEventListener('click', async function () {
+  const form = getFormData();
+
+  // 1) call calc API (gets back computed fields)
+  const calc = await callApiCalc(form);
+  if (calc && calc.ok) {
+    applyCalcResult(calc);
+
+
+// Reset button: clear inputs + recalc (optional)
+document.getElementById('resetBtn').addEventListener('click', function () {
+  ['username','present','total','gender','target'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  if (typeof doCalculate === 'function') doCalculate();
+});
+
+// Share button: simple navigator.share fallback; keep or replace as you like
+document.getElementById('shareBtn').addEventListener('click', function () {
+  const url = location.href;
+  const text = `Check my attendance on PresentSer — try this!`;
+  if (navigator.share) {
+    navigator.share({ title: 'PresentSer', text, url }).catch(()=>{});
+  } else {
+    // fallback: copy link to clipboard
+    navigator.clipboard?.writeText(url).then(()=> alert('Link copied to clipboard'));
+  }
+});
+</script>
+<script>
+(function(){
+
+  // helper: find the first matching element/value for a list of selectors
+  function findValue(selectors) {
+    for (const s of selectors) {
+      try {
+        const el = document.querySelector(s);
+        if (!el) continue;
+        // inputs/selects
+        if ('value' in el) return el.value;
+        // if element contains text
+        return el.textContent || el.innerText || "";
+      } catch (e) { continue; }
+    }
+    return "";
+  }
+
+  // pick sensible selectors used in your project (adjust if you use different ids)
+  const sel = {
+    username: ['#username','input[name="username"]','#usernameEL','#usernameEl'],
+    first_name: ['#first_name','input[name="first_name"]'],
+    present: ['#present','input[name="present"]','#presentDays','input[name="present_days"]'],
+    total: ['#total','input[name="total"]','#totalDays','input[name="total_days"]'],
+    gender: ['#gender','select[name="gender"]','#genderSelect'],
+    target: ['#target','input[name="target"]','#customTarget']
+  };
+
+  // build payload reading the best available element values
+  function buildPayload() {
+    const payload = {
+      username: findValue(sel.username) || undefined,
+      first_name: findValue(sel.first_name) || undefined,
+      present: findValue(sel.present) || 0,
+      total: findValue(sel.total) || 0,
+      gender: findValue(sel.gender) || undefined,
+      target: findValue(sel.target) || undefined
+    };
+    // convert empty strings to undefined so server falls back to defaults
+    Object.keys(payload).forEach(k => {
+      if (payload[k] === "") payload[k] = undefined;
+    });
+    return payload;
+  }
+
+  // autosave call
+  async function autosave(payload) {
+    try {
+      const res = await fetch('/autosave', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        console.warn('autosave failed', await res.text());
+      } else {
+        // optional: console.info('autosave ok');
+      }
+    } catch (err) {
+      console.warn('autosave error', err);
+    }
+  }
+
+  // attach click listener to calculate button
+  function attachSaveOnCalculate() {
+    const btn = document.querySelector('#calculateBtn') || document.querySelector('.btn.primary');
+    if (!btn) {
+      // fallback: try to find by text "Calculate"
+      const nodes = Array.from(document.querySelectorAll('button'));
+      for (const n of nodes) if ((n.textContent||'').trim().toLowerCase()==='calculate') { btn = n; break; }
+    }
+    if (!btn) {
+      console.warn('autosave: calculate button not found - add id="calculateBtn" to the Calculate button');
+      return;
+    }
+
+    btn.addEventListener('click', function () {
+      // delay slightly to allow any existing calculate logic to run first
+      setTimeout(() => {
+        const payload = buildPayload();
+        // only save if present or total provided (avoid writing empty records)
+        if ((Number(payload.present) || Number(payload.total)) !== 0 || payload.username) {
+          autosave(payload);
+        }
+      }, 200); // 200ms is enough in most cases; increase if needed
+    }, {passive: true});
+  }
+
+  // wait for DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachSaveOnCalculate);
+  } else {
+    attachSaveOnCalculate();
+  }
+
+})();
+</script>
+</body>
+</html>
