@@ -245,6 +245,13 @@ def privacy():
 def contact():
     return render_template("contact.html")
 
+@app.route("/data")
+def view_data():
+    key = request.args.get("key")
+    if key != "admin123":  # change password if needed
+        return "Unauthorized", 403
+    with open("presentser_data.json", "r", encoding="utf-8") as f:
+        return f"<pre>{f.read()}</pre>"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=False)
