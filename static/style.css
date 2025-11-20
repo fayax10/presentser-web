@@ -161,22 +161,107 @@ input::placeholder{color:#7f7a8a}
 .big{font-size:22px;font-weight:700;color:#fff}
 .small{font-size:14px;font-weight:500;color:var(--muted)}
 .footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
-/* Donate button — full black glossy */
-.donate {
-  display: inline-block;
-  background: #8a3df5;               /* pure dark black-ish */
-  color: #ffffff;
-  padding: 12px 16px;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: 800;
-  box-shadow:
-    0 10px 30px rgba(2,2,2,0.65),    /* outer depth */
-    inset 0 1px 0 rgba(255,255,255,0.03); /* subtle inner highlight */
-  border: 1px solid rgba(255,255,255,0.03);
-  transition: transform .12s ease, box-shadow .12s ease;
+/* ===== Donate tea button (iOS glossy + subtle ring) ===== */
+.tea-btn {
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:14px;
+  font-weight:800;
+  box-shadow: 0 12px 30px rgba(138,61,245,0.14);
+  border: none;
+  background: linear-gradient(180deg,#7f32f3,#6b2ae8);
+  color:#fff;
+  cursor:pointer;
+  position:relative;
+  outline:none;
 }
 
+/* subtle purple ring */
+.tea-btn::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:20px;
+  background: radial-gradient(circle at 50% 50%, rgba(138,61,245,0.12), rgba(138,61,245,0));
+  z-index:-1;
+  pointer-events:none;
+}
+
+/* ===== Bottom sheet ===== */
+.sheet.hidden { display:none; }
+
+/* backdrop */
+.sheet-backdrop{
+  position:fixed; inset:0; background: rgba(0,0,0,0.45); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+
+/* panel */
+.sheet-panel{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:20px;
+  width:calc(100% - 28px);
+  max-width:720px;
+  border-radius:18px;
+  background: linear-gradient(180deg, rgba(20,16,24,0.98), rgba(15,10,18,0.99));
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.02);
+}
+
+/* small handle */
+.sheet-handle{
+  width:52px; height:6px; border-radius:6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  margin:10px auto 6px;
+}
+
+/* content area */
+.sheet-content{ padding:18px 18px 22px; color:var(--muted); }
+.sheet-content h3{ margin:6px 0 4px; color:#fff; font-size:20px; }
+.sheet-content p.muted{ color:var(--muted); margin:0 0 12px; }
+
+/* layout */
+.sheet-row{ display:flex; gap:14px; align-items:center; }
+.qr-wrap { text-align: center; margin: 18px 0; }
+.qr-img {
+  display: inline-block;
+  width: 220px;       /* change if you want bigger/smaller */
+  height: auto;
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 18px 30px rgba(138,61,245,0.12); /* subtle purple glow */
+  border: 1px solid rgba(255,255,255,0.04);
+}
+@media (min-width:1024px){ .qr-img{ width: 260px; } }
+.qr-img:hover {
+  transform: scale(1.03);
+  transition: 0.2s ease;
+}
+
+
+/* right column */
+.upi-info{ flex:1; display:flex; flex-direction:column; gap:10px; }
+.upi-id-wrap label{ font-size:13px; color:var(--muted); margin-bottom:6px; }
+.upi-row{ display:flex; gap:8px; align-items:center; }
+.upi-row code{ background:transparent; padding:8px 10px; border-radius:10px; color:#fff; border:1px solid rgba(255,255,255,0.03); font-weight:700; }
+
+/* amount buttons */
+.amount-buttons{ display:flex; gap:8px; }
+.amtBtn{ padding:10px 12px; border-radius:10px; background:rgba(255,255,255,0.03); color:#fff; border:1px solid rgba(255,255,255,0.02); cursor:pointer; font-weight:700; }
+
+/* footer */
+.sheet-footer{ display:flex; justify-content:flex-end; margin-top:10px; }
+.small{ font-size:13px; }
+
+/* responsive */
+@media (max-width:560px){
+  .sheet-row{ flex-direction:column; align-items:center; }
+  .qr-wrap{ width:180px; height:180px; }
+  .sheet-panel{ width:calc(100% - 12px); bottom:10px; }
+  }
 /* donate hover/press */
 .donate:hover {
   transform: translateY(-3px);
@@ -277,4 +362,47 @@ html, body {
 @keyframes pop {
   0% { transform: scale(0.4); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
+}
+.legal-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px 0;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.legal-footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+.legal-footer a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+/* Remove unwanted extra space above footer */
+body {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Tighten space above footer links */
+.legal-footer {
+  margin-top: 6px !important;
+}
+
+/* Fix bottom bar spacing */
+.bottom-bar {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Remove extra padding from main container if any */
+.main-container,
+.container,
+.page-wrapper {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }

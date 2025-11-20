@@ -233,6 +233,18 @@ def api_status():
 def static_file(fn):
     return send_from_directory("static", fn)
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=False)

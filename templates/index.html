@@ -82,10 +82,73 @@
     </div>
 
     <footer class="footer">
-      <a class="donate" id="donateBtn" href="#" target="_blank"> Donate ☺️</a>
+    <!-- ====== Donate / Buy-me-a-tea button (replace your old donate link) ====== -->
+<button id="buyTeaBtn" class="donate tea-btn" aria-haspopup="dialog" aria-controls="teaSheet">
+  ☕ Buy me a tea
+</button>
+
+
+
+<!-- ====== Bottom sheet ====== -->
+<div id="teaSheet" class="sheet hidden" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="sheet-backdrop" id="sheetBackdrop"></div>
+  <div class="sheet-panel" role="document" aria-labelledby="sheetTitle">
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-content">
+      <h3 id="sheetTitle">Buy me a tea ☕ — Thanks! 💜</h3>
+      <p class="muted">If you like PresentSer, a ₹10 tea keeps it alive. Pick a payment method:</p>
+
+      <div class="sheet-row">
+        <div class="qr-wrap">
+         <img src="/static/qr.png" class="qr-wrap" />
+        </div>
+
+        <div class="upi-info">
+          <div class="upi-id-wrap">
+            <label>UPI ID</label>
+            <div class="upi-row">
+              <code id="upiId">9544099148@slc</code>
+              <button id="copyUpi" class="btn small">Copy</button>
+            </div>
+          </div>
+
+          <div class="amounts">
+            <label>Amount</label>
+            <div class="amount-buttons">
+              <button class="amtBtn" data-amt="10">₹10</button>
+              <button class="amtBtn" data-amt="20">₹20</button>
+              <button class="amtBtn" data-amt="50">₹50</button>
+            </div>
+          </div>
+
+          <div class="actions">
+            <a id="openUpi" class="btn primary full" href="#" target="_blank" rel="noopener">Open UPI app</a>
+            <button id="copyUpiDeep" class="btn ghost full">Copy payment link</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="muted small" style="margin-top:12px">Or scan QR using your UPI app.</p>
+
+      <div class="sheet-footer">
+        <button id="closeSheet" class="btn ghost">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ====== End bottom sheet ====== -->
       <div class="about">Built by Fayas • Simple, fast, student-first.</div>
     </footer>
   </div>
+  <footer class="legal-footer">
+    <p>
+         <a href="/about">About</a> •
+    <a href="/privacy">Privacy Policy</a> •
+
+    <a href="/contact">Contact</a>
+    </p>
+</footer>
  <!-- SHARE BUTTON (place next to Donate button) -->
 
 
@@ -596,6 +659,105 @@ document.getElementById('shareBtn').addEventListener('click', function () {
   }
 
 })();
+</script>
+<script>
+(function(){
+  const UPI_ID = '9544099148@slc';
+  const RECIPIENT_NAME = 'Fayas';
+  // default amount
+  let amount = 10;
+
+  const buyTeaBtn = document.getElementById('buyTeaBtn');
+  const teaSheet = document.getElementById('teaSheet');
+  const backdrop = document.getElementById('sheetBackdrop');
+  const closeSheet = document.getElementById('closeSheet');
+  const upiIdEl = document.getElementById('upiId');
+  const copyUpi = document.getElementById('copyUpi');
+  const copyUpiDeep = document.getElementById('copyUpiDeep');
+  const openUpi = document.getElementById('openUpi');
+  const upiQR = document.getElementById('upiQR');
+  const amtButtons = Array.from(document.querySelectorAll('.amtBtn'));
+
+  function buildUpiLink(amt){
+    const pa = encodeURIComponent(UPI_ID);
+    const pn = encodeURIComponent(RECIPIENT_NAME);
+    const am = encodeURIComponent(String(amt));
+    const tn = encodeURIComponent('Support PresentSer — tea');
+    return `upi://pay?pa=${pa}&pn=${pn}&am=${am}&tn=${tn}&cu=INR`;
+  }
+
+  function showSheet(){
+    teaSheet.classList.remove('hidden');
+    teaSheet.setAttribute('aria-hidden','false');
+    // generate QR (Google charts). If you want offline QR you can swap method.
+    const upiLink = buildUpiLink(amount);
+    upiQR.src = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=' + encodeURIComponent(upiLink);
+    openUpi.href = upiLink;
+  }
+
+  function hideSheet(){
+    teaSheet.classList.add('hidden');
+    teaSheet.setAttribute('aria-hidden','true');
+  }
+
+  buyTeaBtn && buyTeaBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    showSheet();
+  });
+  backdrop && backdrop.addEventListener('click', hideSheet);
+  closeSheet && closeSheet.addEventListener('click', hideSheet);
+
+  // copy simple UPI id
+  copyUpi && copyUpi.addEventListener('click', async function(){
+    try{
+      await navigator.clipboard.writeText(UPI_ID);
+      copyUpi.textContent = 'Copied';
+      setTimeout(()=> copyUpi.textContent = 'Copy', 1400);
+    }catch(e){
+      alert('Copy your UPI ID: ' + UPI_ID);
+    }
+  });
+
+  // copy deep link
+  copyUpiDeep && copyUpiDeep.addEventListener('click', async function(){
+    const link = buildUpiLink(amount);
+    try{
+      await navigator.clipboard.writeText(link);
+      copyUpiDeep.textContent = 'Copied link';
+      setTimeout(()=> copyUpiDeep.textContent = 'Copy payment link', 1600);
+    }catch(e){
+      alert('UPI link: ' + link);
+    }
+  });
+
+  // amount buttons
+  amtButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      amtButtons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      amount = Number(btn.dataset.amt || 10);
+      // refresh QR and open link
+      const upiLink = buildUpiLink(amount);
+      upiQR.src = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=' + encodeURIComponent(upiLink);
+      openUpi.href = upiLink;
+    });
+  });
+
+  // openUpi: users' device will try to open installed UPI apps with the upi:// scheme
+  openUpi.addEventListener('click', function(){
+    // small UX hint: link is set; on mobile this triggers app chooser
+  });
+
+  // keyboard escape to close
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && !teaSheet.classList.contains('hidden')) hideSheet();
+  });
+
+  // set initial UPI id text
+  upiIdEl && (upiIdEl.textContent = UPI_ID);
+
+})();
+
 </script>
 </body>
 </html>
