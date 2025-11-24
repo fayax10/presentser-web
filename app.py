@@ -253,5 +253,11 @@ def view_data():
     with open("presentser_data.json", "r", encoding="utf-8") as f:
         return f"<pre>{f.read()}</pre>"
 
+
+@app.route('/presentser_data.json')
+def get_json():
+    with open("presentser_data.json") as f:
+        return f.read()
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=False)
