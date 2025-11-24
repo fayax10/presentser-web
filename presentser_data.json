@@ -65,5 +65,13 @@
     "gender": "male",
     "username": "Fayshssh",
     "first_name": null
+  },
+  "sdsd": {
+    "present": 43.0,
+    "total": 23.0,
+    "target": 75.0,
+    "gender": null,
+    "username": "sdsd",
+    "first_name": null
   }
 }
