@@ -444,3 +444,36 @@ body {
     padding: 2px 6px;
     border-radius: 4px;
 }
+/* Make sure your ad container uses .ad-banner (adjust if different) */
+.ad-banner {
+  position: relative;          /* required for the ::before overlay */
+  transition: filter .22s ease, opacity .22s ease, transform .22s ease;
+  will-change: filter, opacity;
+  z-index: 5;                   /* default — below modal */
+}
+
+/* Blurred + dim state */
+.ad-banner.blurred {
+  filter: blur(6px) saturate(.85);
+  opacity: 0.65;
+  pointer-events: none;         /* disable clicks while blurred */
+}
+
+/* subtle dark overlay so text on modal pops */
+.ad-banner.blurred::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.36);
+  border-radius: inherit;      /* preserves rounded corners */
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* Make sure the bottom-sheet/modal stacks above ad (large z-index) */
+.sheet-panel, .sheet, .share-sheet .sheet {
+  z-index: 2000 !important;    /* ensure modal above everything */
+}
+
+/* optional: animate modal content slightly (nice touch) */
+.sheet-panel.show { transform: translateY(0) scale(1); }

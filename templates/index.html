@@ -265,6 +265,19 @@ donateBtn.addEventListener("click", function () {
       "upi://pay?pa=9544099148@slc&pn=Fayas&cu=INR&am=50&tn=Support%20PresentSer";
 
     window.location.href = upiUrl;
+    const adEl = document.querySelector('.ad-banner'); // adjust selector if needed
+
+function openTeaSheet() {
+  if (!teaSheet) return;
+  show(teaSheet);                         // your existing code
+  if (adEl) adEl.classList.add('blurred'); // add blur + dim
+}
+
+function closeTeaSheet() {
+  if (!teaSheet) return;
+  hide(teaSheet);                         // your existing code
+  if (adEl) adEl.classList.remove('blurred'); // remove blur
+}
 });
 </script>
 <script>
@@ -390,6 +403,9 @@ donateBtn.addEventListener("click", function () {
       shareImageBtn && (shareImageBtn.title = "Image capture requires html2canvas");
       downloadImageBtn && (downloadImageBtn.title = "Image capture requires html2canvas");
     }
+
+
+
   });
 })();
 </script>
@@ -770,7 +786,10 @@ document.getElementById('shareBtn').addEventListener('click', function () {
 
   // set initial UPI id text
   upiIdEl && (upiIdEl.textContent = UPI_ID);
-
+function closeTeaSheet() {
+    teaSheet.classList.add('hidden');
+    document.querySelector('.ad-banner')?.classList.remove('hide-ad');
+}
 })();
 
 </script>
