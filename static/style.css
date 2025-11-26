@@ -406,3 +406,41 @@ body {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
+
+.ad-banner {
+    width: 100%;
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ad-content {
+    width: 92%;
+    background: #111;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    height: 90px;               /* FIXED HEIGHT */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;            /* PREVENT stretching */
+    border-radius: 14px;
+}
+
+.ad-tag {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+}

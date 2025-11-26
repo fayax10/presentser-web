@@ -51,10 +51,10 @@
     "first_name": null
   },
   "local": {
-    "present": 7.5,
-    "total": 12.0,
+    "present": 58.0,
+    "total": 60.0,
     "target": 75.0,
-    "gender": "male",
+    "gender": null,
     "username": "local",
     "first_name": null
   },
