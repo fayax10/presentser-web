@@ -794,5 +794,67 @@ function closeTeaSheet() {
 })();
 
 </script>
+  <script>
+/* IDs used below assume your input elements:
+   #present, #total, #gender, #target
+   and these result containers: #currentPct, #daysToTarget, #bunkMeter, #quip
+   adapt the IDs to your actual DOM if they differ.
+*/
+
+function resetCalculator() {
+  // inputs
+  const ids = ['present','total','gender','target','username'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    else el.value = '';
+  });
+
+  // UI outputs
+  const outMap = {
+    currentPct: '--%',
+    daysToTarget: '—',
+    bunkMeter: '—',
+    quip: ''
+  };
+  Object.entries(outMap).forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+  });
+
+  // If you show/hide result panel
+  const resultPanel = document.querySelector('.result');
+  if (resultPanel) { resultPanel.classList.add('hidden'); }
+
+  // Reset any animated / pulse states
+  const pct = document.getElementById('currentPct');
+  if (pct) pct.classList.remove('pulse');
+
+  // Clear localStorage if you saved state there (uncomment keys you use)
+  // localStorage.removeItem('presentser_data');
+  // localStorage.removeItem('presentser_user');
+  // or clear all (careful)
+  // localStorage.clear();
+
+  // Focus first input so user can start typing
+  const first = document.getElementById('present') || document.getElementById('username');
+  if (first) first.focus();
+}
+
+// Hook the button — adapt selector if your Reset button has different id/class
+document.addEventListener('DOMContentLoaded', () => {
+  const resetBtn = document.querySelector('#resetBtn, .btn-reset, button.reset, .reset');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', (e) => {
+      e.preventDefault(); // prevents accidental form submission
+      resetCalculator();
+      console.log('Reset done');
+    });
+  } else {
+    console.warn('Reset button not found — add id="resetBtn" to the Reset button.');
+  }
+});
+</script>
 </body>
 </html>
