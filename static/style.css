@@ -469,6 +469,10 @@ body {
   z-index: 6;
   pointer-events: none;
 }
+.ad-wrapper {
+  text-decoration: none;
+  display: block;
+}
 
 /* Make sure the bottom-sheet/modal stacks above ad (large z-index) */
 .sheet-panel, .sheet, .share-sheet .sheet {
