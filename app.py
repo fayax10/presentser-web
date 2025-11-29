@@ -373,7 +373,7 @@ def admin_ui():
 @app.route('/debug/missing')
 def debug_missing():
     # protect it by simple query param key (change or remove after debug)
-    if request.args.get("key") != "admin123":
+    if request.args.get("key") != "admin:fayax10":
         return "unauthorized", 403
 
     data = load_data()
