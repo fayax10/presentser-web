@@ -247,13 +247,38 @@ def privacy():
 def contact():
     return render_template("contact.html")
 
+from flask import render_template
+
 @app.route("/data")
 def view_data():
+    # quick auth via ?key=admin123 (you can replace with session-based protection)
     key = request.args.get("key")
-    if key != "admin123":  # change password if needed
+    if key != "admin123":
         return "Unauthorized", 403
-    with open("presentser_data.json", "r", encoding="utf-8") as f:
-        return f"<pre>{f.read()}</pre>"
+
+    # load JSON file
+    try:
+        with open("presentser_data.json", "r", encoding="utf-8") as f:
+            raw = json.load(f)
+    except Exception:
+        raw = {}
+
+    # transform to list of rows for the template
+    rows = []
+    for username, rec in raw.items():
+        rows.append({
+            "username": username,
+            "present": rec.get("present"),
+            "total": rec.get("total"),
+            "target": rec.get("target"),
+            "gender": rec.get("gender"),
+            "first_name": rec.get("first_name")
+        })
+
+    # sort rows by username (optional)
+    rows.sort(key=lambda r: str(r["username"]).lower())
+
+    return render_template("admin_data.html", rows=rows)
 
 
 @app.route('/presentser_data.json')

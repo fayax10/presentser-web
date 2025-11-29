@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PresentSer — Data</title>
+  <style>
+    :root {
+      --bg: #0f0f10;
+      --card: #111214;
+      --muted: #9aa0a6;
+      --accent: #7c5cff;
+      --white: #eaeef2;
+    }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: -apple-system, Inter, Roboto, "Helvetica Neue", Arial;
+      padding: 18px;
+      margin: 0;
+    }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    h1 { text-align:center; margin-bottom: 18px; font-weight:600; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    table { width:100%; border-collapse: collapse; margin-top: 8px; }
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      font-size: 14px;
+    }
+    th {
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    th .sort-hint { font-size: 11px; color: var(--muted); margin-left: 8px; }
+    tr:hover td { background: rgba(255,255,255,0.01); }
+    .pill {
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight:600;
+      color: var(--white);
+      background: var(--accent);
+      font-size: 13px;
+    }
+    @media (max-width:700px){
+      table, thead, tbody, th, td, tr { display:block; }
+      th { display:none; }
+      tr { margin: 10px 0; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 10px; }
+      td { display:flex; justify-content:space-between; padding:8px 12px; border: none; }
+      td::before { content: attr(data-label); color: var(--muted); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>PresentSer — Data</h1>
+
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span class="pill">User records: {{ rows|length }}</span>
+        </div>
+        <div style="color:var(--muted); font-size:13px;">Tip: tap headers to sort</div>
+      </div>
+
+      <table id="dataTable" aria-live="polite">
+        <thead>
+          <tr>
+            <th data-key="username">User <span class="sort-hint">⇅</span></th>
+            <th data-key="present">Present <span class="sort-hint">⇅</span></th>
+            <th data-key="total">Total <span class="sort-hint">⇅</span></th>
+            <th data-key="target">Target% <span class="sort-hint">⇅</span></th>
+            <th data-key="gender">Gender <span class="sort-hint">⇅</span></th>
+            <th data-key="first_name">First name <span class="sort-hint">⇅</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in rows %}
+          <tr>
+            <td data-label="User">{{ r.username }}</td>
+            <td data-label="Present">{{ r.present if r.present is not none else '' }}</td>
+            <td data-label="Total">{{ r.total if r.total is not none else '' }}</td>
+            <td data-label="Target%">{{ r.target if r.target is not none else '' }}</td>
+            <td data-label="Gender">{{ r.gender or '' }}</td>
+            <td data-label="First name">{{ r.first_name or '' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // small client-side sort (toggles asc/desc)
+    (function(){
+      const table = document.getElementById('dataTable');
+      const tbody = table.querySelector('tbody');
+      const headers = table.querySelectorAll('th');
+      let sortState = { key: null, dir: 1 }; // 1 asc, -1 desc
+
+      headers.forEach(h => {
+        h.addEventListener('click', () => {
+          const key = h.getAttribute('data-key');
+          sortState.dir = (sortState.key === key) ? -sortState.dir : 1;
+          sortState.key = key;
+          sortTable();
+        });
+      });
+
+      function getCellValue(tr, keyIndex){
+        const cell = tr.children[keyIndex];
+        const txt = cell.textContent.trim();
+        // try numeric
+        const num = parseFloat(txt.replace(/,/g,''));
+        return (isNaN(num) ? txt.toLowerCase() : num);
+      }
+
+      function sortTable(){
+        const headersArr = Array.from(headers);
+        const keyIndex = headersArr.findIndex(h => h.getAttribute('data-key') === sortState.key);
+        if (keyIndex < 0) return;
+
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        rows.sort((a,b) => {
+          const va = getCellValue(a, keyIndex);
+          const vb = getCellValue(b, keyIndex);
+          if (va === vb) return 0;
+          return (va > vb ? 1 : -1) * sortState.dir;
+        });
+        // reattach
+        rows.forEach(r => tbody.appendChild(r));
+      }
+    })();
+  </script>
+</body>
+</html>
