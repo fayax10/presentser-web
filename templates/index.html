@@ -894,6 +894,18 @@ document.getElementById("ad-banner").addEventListener("click", (e) => {
   window.location.href = "https://advertiser.example";
   document.getElementById("liveUsers").innerText = data.live_users;
 });
+    fetch("/autosave", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    present,
+    total,
+    target,
+    gender,
+    username,
+    vid: getVid()
+  })
+});
 </script>
 </body>
 </html>

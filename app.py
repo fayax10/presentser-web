@@ -34,6 +34,7 @@ def autosave():
     # prefer a real username; fallback to visitor id (vid) if client sends it,
     # otherwise generate a random local key so anonymous saves don't collide
     key = None
+    # prefer a real username; fallback to visitor id (vid); otherwise random
     if payload.get("username"):
         key = str(payload["username"])
     elif payload.get("vid"):
