@@ -51,8 +51,8 @@
     "first_name": null
   },
   "local": {
-    "present": 56.0,
-    "total": 78.0,
+    "present": 5.0,
+    "total": 6.0,
     "target": 75.0,
     "gender": null,
     "username": "local",
@@ -96,6 +96,14 @@
     "target": 75.0,
     "gender": null,
     "username": "jgjg",
+    "first_name": null
+  },
+  "fayass": {
+    "present": 56.0,
+    "total": 67.0,
+    "target": 75.0,
+    "gender": null,
+    "username": "fayass",
     "first_name": null
   }
 }

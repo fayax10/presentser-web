@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request, jsonify, send_from_directory, make_response
 from pathlib import Path
 import json, os, time
 import math
@@ -146,7 +146,8 @@ def pick_quip(pct):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    resp = make_response(render_template("index.html"))
+    return resp
 
 # API: Calculate (without saving)
 @app.route("/api/calc", methods=["POST"])
@@ -311,5 +312,19 @@ def stats():
       "unique_visitors": unique,
       "total_hits": total_hits
     })
+from flask import abort
+import os
+
+ADMIN_KEY = os.getenv("ADMIN_KEY")  # set on Render to protect /admin if you want
+
+@app.route("/admin")
+def admin_ui():
+    # if ADMIN_KEY is set, require ?key=ADMIN_KEY (lightweight)
+    if ADMIN_KEY:
+        req_key = request.args.get("key")
+        if req_key != ADMIN_KEY:
+            return abort(403, "forbidden")
+    return render_template("admin.html")
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=False)

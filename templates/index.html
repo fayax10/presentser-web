@@ -883,6 +883,17 @@ async function trackVisit(){
 
 // fire on page load
 window.addEventListener('load', trackVisit);
+    // in your page js (on ad click)
+document.getElementById("ad-banner").addEventListener("click", (e) => {
+  fetch("/track/ad_click", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({target: "https://advertiser.example"})
+  }).catch(()=>{});
+  // then redirect to advertiser
+  window.location.href = "https://advertiser.example";
+  document.getElementById("liveUsers").innerText = data.live_users;
+});
 </script>
 </body>
 </html>

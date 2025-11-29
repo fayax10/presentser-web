@@ -1,148 +1,181 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PresentSer — Stats</title>
-<link rel="stylesheet" href="/static/admin-admin.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PresentSer Admin</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    :root{
+      --bg:#0f0f11;
+      --card:#141218;
+      --muted:#9aa0a6;
+      --accent:#7c4dff;
+      --ok:#4caf50;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#0b0b0c, #0f0f11);color:#eee;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;}
+    .wrap{max-width:920px;margin:28px auto;padding:20px}
+    h1{text-align:center;margin:6px 0 20px;font-weight:600;letter-spacing:0.6px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .card{background:var(--card);border-radius:10px;padding:14px;box-shadow:0 4px 14px rgba(0,0,0,0.5);min-height:68px;display:flex;align-items:center;justify-content:space-between}
+    .label{color:var(--muted);font-size:13px}
+    .value{font-weight:700;color:#fff;font-size:20px}
+    .small{font-size:13px;color:var(--muted)}
+    .inline {display:flex;gap:10px;align-items:center}
+    .pill{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px}
+    .chart-wrap{background:var(--card);padding:16px;border-radius:12px;margin-top:18px}
+    canvas{width:100% !important;height:240px !important}
+    .recent{margin-top:14px;color:var(--muted);font-size:13px}
+    .recent li{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between}
+    .legend{display:flex;gap:10px;margin-top:10px;align-items:center}
+    .dot{width:10px;height:10px;border-radius:50%}
+    .mobile-dot{background:#00bcd4}
+    .desktop-dot{background:#ffb86b}
+    @media (max-width:520px){.value{font-size:18px}}
+  </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">PresentSer — Admin</div>
-  <div class="meta">Auto-refresh: <span id="refreshInterval">10s</span></div>
-</header>
+  <div class="wrap">
+    <h1>PresentSer Admin</h1>
 
-<main class="container">
-  <section class="cards">
-    <div class="card">
-      <div class="label">Total hits</div>
-      <div class="value" id="total_hits">—</div>
-    </div>
-    <div class="card">
-      <div class="label">Unique visitors</div>
-      <div class="value" id="unique_visitors">—</div>
-    </div>
-    <div class="card">
-      <div class="label">Today</div>
-      <div class="value" id="today_hits">—</div>
-    </div>
-    <div class="card">
-      <div class="label">Live (5m)</div>
-      <div class="value" id="live">—</div>
-    </div>
-  </section>
+    <div class="grid" id="counters">
+      <div class="card">
+        <div>
+          <div class="label">📈 Total Hits</div>
+          <div id="totalHits" class="value">–</div>
+        </div>
+        <div class="pill" id="todayHits">today: –</div>
+      </div>
 
-  <section class="split">
-    <div class="left">
-      <div class="panel">
-        <h3>Devices</h3>
-        <div class="device-row">
-          <div class="device-info">
-            <div class="device-label">Mobile</div>
-            <div class="device-value" id="device_mobile">0</div>
-          </div>
-          <div class="device-info">
-            <div class="device-label">Desktop</div>
-            <div class="device-value" id="device_desktop">0</div>
+      <div class="card">
+        <div>
+          <div class="label">🧍 Unique Visitors</div>
+          <div id="uniqueVisitors" class="value">–</div>
+        </div>
+        <div class="pill" id="uniquePill">unique</div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="label">🔥 Live Users</div>
+          <div id="liveUsers" class="value">–</div>
+        </div>
+        <div class="pill" id="livePill">5m</div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="label">Devices</div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <div><div class="label">📱 Mobile</div><div id="mobileCount" class="value">–</div></div>
+            <div><div class="label">💻 Desktop</div><div id="desktopCount" class="value">–</div></div>
           </div>
         </div>
-      </div>
-
-      <div class="panel">
-        <h3>Last 7 days</h3>
-        <div id="chart" class="chart"></div>
-        <div class="chart-legend" id="chart-legend"></div>
+        <div class="legend">
+          <div class="dot mobile-dot"></div><small class="small">mobile</small>
+          <div class="dot desktop-dot"></div><small class="small">desktop</small>
+        </div>
       </div>
     </div>
 
-    <div class="right">
-      <div class="panel">
-        <h3>Recent visits (10)</h3>
-        <ul id="recent" class="recent-list"> <li class="muted">Loading...</li> </ul>
+    <div class="chart-wrap">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <strong>Last 7 Days</strong>
+          <div class="small">daily hits</div>
+        </div>
+        <div class="small" id="trend">trend —</div>
       </div>
-
-      <div class="panel">
-        <h3>Raw JSON</h3>
-        <pre id="raw" class="raw">...</pre>
-      </div>
+      <canvas id="last7"></canvas>
     </div>
-  </section>
 
-  <footer class="footer">
-    Built by Fayas • <a href="/">PresentSer</a>
-  </footer>
-</main>
+    <div class="recent">
+      <strong>Recent activity</strong>
+      <ul id="recentList"></ul>
+    </div>
+  </div>
 
 <script>
-const API = '/stats';
-async function fetchStats(){
-  try{
-    const res = await fetch(API, {cache: "no-store"});
-    if(!res.ok) throw new Error('fetch error');
-    const j = await res.json();
-    render(j);
-  }catch(e){
-    console.error(e);
-    document.getElementById('raw').textContent = 'Error fetching /stats';
+  // fetch + render function
+  async function refresh(){
+    try{
+      const res = await fetch('/stats');
+      if(!res.ok) { throw new Error('fetch failed') }
+      const data = await res.json();
+
+      // counters
+      document.getElementById('totalHits').innerText = data.total_hits ?? 0;
+      document.getElementById('uniqueVisitors').innerText = data.unique_visitors ?? 0;
+      document.getElementById('mobileCount').innerText = (data.devices && data.devices.mobile) || 0;
+      document.getElementById('desktopCount').innerText = (data.devices && data.devices.desktop) || 0;
+      document.getElementById('liveUsers').innerText = data.live ?? 0;
+      document.getElementById('todayHits').innerText = 'today: ' + (data.today_hits ?? 0);
+
+      // last 7 days chart
+      const labels = Object.keys(data.last_7_days || {});
+      const values = labels.map(d => data.last_7_days[d] || 0);
+
+      // compute trend simple
+      const sumRecent = values.slice(-3).reduce((a,b)=>a+b,0);
+      const sumPrev = values.slice(0, Math.max(0, values.length-3)).reduce((a,b)=>a+b,0);
+      const trend = (sumRecent > sumPrev) ? '⬆' : (sumRecent < sumPrev ? '⬇' : '→');
+      document.getElementById('trend').innerText = `trend ${trend}`;
+
+      renderChart(labels, values);
+
+      // recent
+      const recentList = document.getElementById('recentList');
+      recentList.innerHTML = '';
+      const rec = data.recent || [];
+      if(rec.length === 0){
+        recentList.innerHTML = '<li style="padding:8px;color:var(--muted)">No recent activity</li>';
+      } else {
+        rec.slice(0,8).forEach(r=>{
+          const li = document.createElement('li');
+          const path = r.path || '/';
+          const when = new Date((r.last_seen || (Date.now()/1000)) * 1000);
+          li.innerHTML = `<span style="color:var(--muted)">${path}</span><span style="color:var(--muted)">${when.toLocaleTimeString()}</span>`;
+          recentList.appendChild(li);
+        });
+      }
+    }catch(err){
+      console.error('refresh error',err);
+    }
   }
-}
 
-function render(data){
-  // cards
-  document.getElementById('total_hits').textContent = data.total_hits ?? 0;
-  document.getElementById('unique_visitors').textContent = data.unique_visitors ?? 0;
-  document.getElementById('today_hits').textContent = data.today_hits ?? 0;
-  document.getElementById('live').textContent = data.live ?? 0;
-
-  // devices
-  const dev = data.devices || {mobile:0, desktop:0};
-  document.getElementById('device_mobile').textContent = dev.mobile ?? 0;
-  document.getElementById('device_desktop').textContent = dev.desktop ?? 0;
-
-  // last 7 days chart
-  const last7 = data.last_7_days || {};
-  const keys = Object.keys(last7);
-  const values = keys.map(k => last7[k] || 0);
-  const max = Math.max(1, ...values);
-  const chart = document.getElementById('chart');
-  chart.innerHTML = '';
-  keys.forEach((k, idx) => {
-    const v = values[idx];
-    const bar = document.createElement('div');
-    bar.className = 'bar';
-    bar.style.height = (v / max * 100) + '%';
-    bar.title = k + ': ' + v;
-    const lbl = document.createElement('div');
-    lbl.className = 'bar-label';
-    lbl.textContent = k.slice(5); // show MM-DD
-    bar.appendChild(lbl);
-    chart.appendChild(bar);
-  });
-
-  // recent list
-  const recent = data.recent || [];
-  const rEl = document.getElementById('recent');
-  rEl.innerHTML = '';
-  if(recent.length === 0){
-    rEl.innerHTML = '<li class="muted">No recent visits</li>';
-  } else {
-    recent.forEach(item => {
-      const li = document.createElement('li');
-      const t = new Date((item.last_seen||0)*1000);
-      li.innerHTML = '<div class="r-line"><b>' + (item.path || '/') + '</b> <span class="muted"> — ' + t.toLocaleString() + '</span></div>';
-      rEl.appendChild(li);
+  // Chart.js
+  let chartInstance = null;
+  function renderChart(labels, values){
+    const ctx = document.getElementById('last7').getContext('2d');
+    if(chartInstance) chartInstance.destroy();
+    chartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'hits',
+          data: values,
+          backgroundColor: labels.map(_=> 'rgba(124,77,255,0.9)'),
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        plugins:{legend:{display:false}},
+        scales:{
+          x:{grid:{display:false}, ticks:{color:'rgba(255,255,255,0.75)'}},
+          y:{grid:{color:'rgba(255,255,255,0.03)'}, ticks:{color:'rgba(255,255,255,0.6)'}}
+        },
+        maintainAspectRatio:false,
+      }
     });
   }
 
-  // raw
-  document.getElementById('raw').textContent = JSON.stringify(data, null, 2);
-}
-
-// auto-refresh every N seconds
-const INTERVAL = 10;
-document.getElementById('refreshInterval').textContent = INTERVAL + 's';
-fetchStats();
-setInterval(fetchStats, INTERVAL*1000);
+  // refresh immediately and every 8s (live-ish)
+  refresh();
+  setInterval(refresh, 8000);
 </script>
 </body>
 </html>
