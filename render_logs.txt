@@ -1,0 +1,208 @@
+2025-11-24T04:10:08.762803399Z [2025-11-24 04:10:08,762] INFO in app: autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T04:10:08.76282491Z INFO:app:autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T04:10:14.007624004Z [2025-11-24 04:10:14,007] INFO in app: autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T04:10:14.007640485Z INFO:app:autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T04:10:14.471805554Z [2025-11-24 04:10:14,471] INFO in app: autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T04:10:14.471826505Z INFO:app:autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T04:10:26.491671758Z [2025-11-24 04:10:26,491] INFO in app: autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T04:10:26.491725332Z INFO:app:autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T06:20:35.493918501Z [2025-11-24 06:20:35,493] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '16', 'target': '80', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T06:20:35.493938162Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '16', 'target': '80', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T06:56:43.691110377Z [2025-11-24 06:56:43,690] INFO in app: autosave: saving key=Faheem payload={'present': '19', 'total': '56', 'target': None, 'gender': None, 'username': 'Faheem', 'first_name': None}
+2025-11-24T06:56:43.691131458Z INFO:app:autosave: saving key=Faheem payload={'present': '19', 'total': '56', 'target': None, 'gender': None, 'username': 'Faheem', 'first_name': None}
+2025-11-24T06:56:46.654374408Z [2025-11-24 06:56:46,653] INFO in app: autosave: saving key=Faheem payload={'present': '19', 'total': '56', 'target': None, 'gender': None, 'username': 'Faheem', 'first_name': None}
+2025-11-24T06:56:46.654426591Z INFO:app:autosave: saving key=Faheem payload={'present': '19', 'total': '56', 'target': None, 'gender': None, 'username': 'Faheem', 'first_name': None}
+2025-11-24T06:57:33.608496844Z [2025-11-24 06:57:33,608] INFO in app: autosave: saving key=Faheem payload={'present': '33.9', 'total': '100', 'target': '75', 'gender': None, 'username': 'Faheem', 'first_name': None}
+2025-11-24T06:57:33.608516195Z INFO:app:autosave: saving key=Faheem payload={'present': '33.9', 'total': '100', 'target': '75', 'gender': None, 'username': 'Faheem', 'first_name': None}
+2025-11-24T07:06:32.739419226Z [2025-11-24 07:06:32,739] INFO in app: autosave: saving key=local payload={'present': '19', 'total': '56', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T07:06:32.739439468Z INFO:app:autosave: saving key=local payload={'present': '19', 'total': '56', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T07:07:20.193859558Z [2025-11-24 07:07:20,193] INFO in app: autosave: saving key=local payload={'present': '19', 'total': '56', 'target': '80', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T07:07:20.19388488Z INFO:app:autosave: saving key=local payload={'present': '19', 'total': '56', 'target': '80', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T07:07:31.509822933Z [2025-11-24 07:07:31,509] INFO in app: autosave: saving key=local payload={'present': '19', 'total': '56', 'target': '75', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T07:07:31.509842175Z INFO:app:autosave: saving key=local payload={'present': '19', 'total': '56', 'target': '75', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T07:07:36.881814162Z [2025-11-24 07:07:36,881] INFO in app: autosave: saving key=local payload={'present': '19', 'total': '56', 'target': '80', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T07:07:36.881837944Z INFO:app:autosave: saving key=local payload={'present': '19', 'total': '56', 'target': '80', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T08:28:07.53515487Z [2025-11-24 08:28:07,534] INFO in app: autosave: saving key=local payload={'present': '10.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T08:28:07.535174702Z INFO:app:autosave: saving key=local payload={'present': '10.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T08:29:55.451064835Z [2025-11-24 08:29:55,450] INFO in app: autosave: saving key=Shadiya payload={'present': '14', 'total': '16', 'target': None, 'gender': None, 'username': 'Shadiya', 'first_name': None}
+2025-11-24T08:29:55.451089606Z INFO:app:autosave: saving key=Shadiya payload={'present': '14', 'total': '16', 'target': None, 'gender': None, 'username': 'Shadiya', 'first_name': None}
+2025-11-24T08:36:48.184268183Z [2025-11-24 08:36:48,184] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '16', 'target': '70', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T08:36:48.184292595Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '16', 'target': '70', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:10:17.390783372Z [2025-11-24 10:10:17,390] INFO in app: autosave: saving key=local payload={'present': '10', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:10:17.390810143Z INFO:app:autosave: saving key=local payload={'present': '10', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:10:17.636109561Z [2025-11-24 10:10:17,635] INFO in app: autosave: saving key=local payload={'present': '10', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:10:17.636130642Z INFO:app:autosave: saving key=local payload={'present': '10', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:10:28.041765196Z [2025-11-24 10:10:28,040] INFO in app: autosave: saving key=local payload={'present': '10', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:10:28.041770856Z INFO:app:autosave: saving key=local payload={'present': '10', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:12:14.064164715Z [2025-11-24 10:12:14,063] INFO in app: autosave: saving key=local payload={'present': '10', 'total': '14', 'target': '90', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:12:14.064189076Z INFO:app:autosave: saving key=local payload={'present': '10', 'total': '14', 'target': '90', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:12:47.2375441Z [2025-11-24 10:12:47,237] INFO in app: autosave: saving key=local payload={'present': '13', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T10:12:47.237566241Z INFO:app:autosave: saving key=local payload={'present': '13', 'total': '14', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T11:38:47.467617834Z [2025-11-24 11:38:47,467] INFO in app: autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T11:38:47.467640305Z INFO:app:autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T11:39:05.605896931Z [2025-11-24 11:39:05,605] INFO in app: autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T11:39:05.605925003Z INFO:app:autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T20:36:35.407183978Z [2025-11-24 20:36:35,406] INFO in app: autosave: saving key=local payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T20:36:35.407209698Z INFO:app:autosave: saving key=local payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T20:47:25.205486635Z [2025-11-24 20:47:25,205] INFO in app: autosave: saving key=local payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T20:47:25.205509256Z INFO:app:autosave: saving key=local payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-24T20:47:30.922371737Z [2025-11-24 20:47:30,922] INFO in app: autosave: saving key=Fayas payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': 'Fayas', 'first_name': None}
+2025-11-24T20:47:30.922393408Z INFO:app:autosave: saving key=Fayas payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': 'Fayas', 'first_name': None}
+2025-11-24T20:47:31.696357623Z [2025-11-24 20:47:31,696] INFO in app: autosave: saving key=Fayas payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': 'Fayas', 'first_name': None}
+2025-11-24T20:47:31.696374713Z INFO:app:autosave: saving key=Fayas payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': 'Fayas', 'first_name': None}
+2025-11-24T20:47:44.760618757Z [2025-11-24 20:47:44,760] INFO in app: autosave: saving key=Hai payload={'present': '7.5', 'total': '8', 'target': None, 'gender': None, 'username': 'Hai', 'first_name': None}
+2025-11-24T20:47:44.760653218Z INFO:app:autosave: saving key=Hai payload={'present': '7.5', 'total': '8', 'target': None, 'gender': None, 'username': 'Hai', 'first_name': None}
+2025-11-24T20:53:30.833986182Z [2025-11-24 20:53:30,833] INFO in app: autosave: saving key=Hai payload={'present': '7.5', 'total': '8', 'target': None, 'gender': None, 'username': 'Hai', 'first_name': None}
+2025-11-24T20:53:30.834004273Z INFO:app:autosave: saving key=Hai payload={'present': '7.5', 'total': '8', 'target': None, 'gender': None, 'username': 'Hai', 'first_name': None}
+2025-11-24T20:53:41.689588513Z [2025-11-24 20:53:41,689] INFO in app: autosave: saving key=Fayass payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': 'Fayass', 'first_name': None}
+2025-11-24T20:53:41.689613344Z INFO:app:autosave: saving key=Fayass payload={'present': '75', 'total': '76', 'target': None, 'gender': None, 'username': 'Fayass', 'first_name': None}
+2025-11-24T21:00:45.598928624Z [2025-11-24 21:00:45,598] INFO in app: autosave: saving key=Vahag payload={'present': '54', 'total': '56', 'target': None, 'gender': None, 'username': 'Vahag', 'first_name': None}
+2025-11-24T21:00:45.598949066Z INFO:app:autosave: saving key=Vahag payload={'present': '54', 'total': '56', 'target': None, 'gender': None, 'username': 'Vahag', 'first_name': None}
+2025-11-24T21:07:14.237410628Z [2025-11-24 21:07:14,236] INFO in app: autosave: saving key=Hahah payload={'present': '54', 'total': '64', 'target': None, 'gender': None, 'username': 'Hahah', 'first_name': None}
+2025-11-24T21:07:14.239294657Z INFO:app:autosave: saving key=Hahah payload={'present': '54', 'total': '64', 'target': None, 'gender': None, 'username': 'Hahah', 'first_name': None}
+2025-11-25T04:09:39.86463657Z [2025-11-25 04:09:39,864] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-25T04:09:39.864657051Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-25T19:38:09.227340994Z [2025-11-25 19:38:09,227] INFO in app: autosave: saving key=local payload={'present': '45', 'total': '45', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-25T19:38:09.227365556Z INFO:app:autosave: saving key=local payload={'present': '45', 'total': '45', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T09:36:17.699795771Z [2025-11-26 09:36:17,699] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T09:36:17.699845922Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T09:36:25.385102543Z [2025-11-26 09:36:25,384] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T09:36:25.386200378Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T13:04:25.434935113Z [2025-11-26 13:04:25,434] INFO in app: autosave: saving key=local payload={'present': '58', 'total': '60', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T13:04:25.434958224Z INFO:app:autosave: saving key=local payload={'present': '58', 'total': '60', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T14:37:15.346749393Z [2025-11-26 14:37:15,346] INFO in app: autosave: saving key=local payload={'present': '56', 'total': '60', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T14:37:15.346786745Z INFO:app:autosave: saving key=local payload={'present': '56', 'total': '60', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:28:04.580423019Z [2025-11-26 15:28:04,580] INFO in app: autosave: saving key=Fayas payload={'present': '11', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Fayas', 'first_name': None}
+2025-11-26T15:28:04.580443709Z INFO:app:autosave: saving key=Fayas payload={'present': '11', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Fayas', 'first_name': None}
+2025-11-26T15:28:07.139503364Z [2025-11-26 15:28:07,139] INFO in app: autosave: saving key=Fayas payload={'present': '11', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Fayas', 'first_name': None}
+2025-11-26T15:28:07.139522614Z INFO:app:autosave: saving key=Fayas payload={'present': '11', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Fayas', 'first_name': None}
+2025-11-26T15:40:25.263108548Z [2025-11-26 15:40:25,262] INFO in app: autosave: saving key=local payload={'present': '45', 'total': '56', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:40:25.26313568Z INFO:app:autosave: saving key=local payload={'present': '45', 'total': '56', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:40:36.179312555Z [2025-11-26 15:40:36,179] INFO in app: autosave: saving key=local payload={'present': '56', 'total': '55', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:40:36.179338036Z INFO:app:autosave: saving key=local payload={'present': '56', 'total': '55', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:44:15.5746037Z [2025-11-26 15:44:15,574] INFO in app: autosave: saving key=local payload={'present': '55', 'total': '45', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:44:15.574624621Z INFO:app:autosave: saving key=local payload={'present': '55', 'total': '45', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:44:29.998969549Z [2025-11-26 15:44:29,998] INFO in app: autosave: saving key=local payload={'present': '55', 'total': '45', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:44:29.998989249Z INFO:app:autosave: saving key=local payload={'present': '55', 'total': '45', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:44:41.588781304Z [2025-11-26 15:44:41,588] INFO in app: autosave: saving key=local payload={'present': '55', 'total': '65', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T15:44:41.588804014Z INFO:app:autosave: saving key=local payload={'present': '55', 'total': '65', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:19:18.899246077Z [2025-11-26 16:19:18,899] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '16', 'target': None, 'gender': 'male', 'username': None, 'first_name': None}
+2025-11-26T16:19:18.899267948Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '16', 'target': None, 'gender': 'male', 'username': None, 'first_name': None}
+2025-11-26T16:21:23.27971377Z [2025-11-26 16:21:23,279] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:23.279730841Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:31.405197587Z [2025-11-26 16:21:31,405] INFO in app: autosave: saving key=local payload={'present': '12', 'total': '17', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:31.405216218Z INFO:app:autosave: saving key=local payload={'present': '12', 'total': '17', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:37.806083713Z [2025-11-26 16:21:37,805] INFO in app: autosave: saving key=local payload={'present': '13', 'total': '18', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:37.806119585Z INFO:app:autosave: saving key=local payload={'present': '13', 'total': '18', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:44.839679296Z [2025-11-26 16:21:44,839] INFO in app: autosave: saving key=local payload={'present': '14', 'total': '19', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:44.839699428Z INFO:app:autosave: saving key=local payload={'present': '14', 'total': '19', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:51.867192765Z [2025-11-26 16:21:51,867] INFO in app: autosave: saving key=local payload={'present': '15', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:21:51.867217396Z INFO:app:autosave: saving key=local payload={'present': '15', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:24:21.503393748Z [2025-11-26 16:24:21,503] INFO in app: autosave: saving key=local payload={'present': '13', 'total': '27', 'target': '75', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:24:21.503425769Z INFO:app:autosave: saving key=local payload={'present': '13', 'total': '27', 'target': '75', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:25:15.851869334Z [2025-11-26 16:25:15,851] INFO in app: autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '90', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:25:15.851887335Z INFO:app:autosave: saving key=local payload={'present': '12.5', 'total': '16', 'target': '90', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:26:31.484119884Z [2025-11-26 16:26:31,483] INFO in app: autosave: saving key=Rasha Fathima P payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': 'female', 'username': 'Rasha Fathima P', 'first_name': None}
+2025-11-26T16:26:31.484145465Z INFO:app:autosave: saving key=Rasha Fathima P payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': 'female', 'username': 'Rasha Fathima P', 'first_name': None}
+2025-11-26T16:26:52.877949019Z [2025-11-26 16:26:52,877] INFO in app: autosave: saving key=local payload={'present': '28', 'total': '38', 'target': '75', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:26:52.877971891Z INFO:app:autosave: saving key=local payload={'present': '28', 'total': '38', 'target': '75', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:27:16.26338147Z [2025-11-26 16:27:16,260] INFO in app: autosave: saving key=local payload={'present': '20', 'total': '35', 'target': '95', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:27:16.263405612Z INFO:app:autosave: saving key=local payload={'present': '20', 'total': '35', 'target': '95', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:27:50.211502933Z [2025-11-26 16:27:50,211] INFO in app: autosave: saving key=local payload={'present': '30', 'total': '35', 'target': '95', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:27:50.211541346Z INFO:app:autosave: saving key=local payload={'present': '30', 'total': '35', 'target': '95', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:27:52.110955721Z [2025-11-26 16:27:52,110] INFO in app: autosave: saving key=local payload={'present': '10.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:27:52.110976242Z INFO:app:autosave: saving key=local payload={'present': '10.5', 'total': '16', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:28:05.563887639Z [2025-11-26 16:28:05,563] INFO in app: autosave: saving key=local payload={'present': '30', 'total': '40', 'target': '95', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:28:05.567384225Z INFO:app:autosave: saving key=local payload={'present': '30', 'total': '40', 'target': '95', 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:29:53.515051743Z [2025-11-26 16:29:53,511] INFO in app: autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:29:53.515069934Z INFO:app:autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:31:23.636310633Z [2025-11-26 16:31:23,636] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:31:23.636336204Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:31:26.468682857Z [2025-11-26 16:31:26,468] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:31:26.468700128Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-26T16:31:59.196763541Z [2025-11-26 16:31:59,196] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:31:59.196787202Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:00.73359709Z [2025-11-26 16:32:00,733] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:00.733615411Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:01.507707056Z [2025-11-26 16:32:01,507] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:01.507729907Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:16.428085669Z [2025-11-26 16:32:16,427] INFO in app: autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '90', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:16.428112761Z INFO:app:autosave: saving key=local payload={'present': '11', 'total': '20', 'target': '90', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:25.199983604Z [2025-11-26 16:32:25,199] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '90', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:32:25.199999875Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '90', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:33:06.288910113Z [2025-11-26 16:33:06,288] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': None, 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:33:06.288943094Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': None, 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:33:10.709532773Z [2025-11-26 16:33:10,709] INFO in app: autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '71', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:33:10.709553325Z INFO:app:autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '71', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:33:12.903669822Z [2025-11-26 16:33:12,903] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '90', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:33:12.903692573Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '90', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:33:45.480713736Z [2025-11-26 16:33:45,479] INFO in app: autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:33:45.481429494Z INFO:app:autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:33:49.637963643Z [2025-11-26 16:33:49,637] INFO in app: autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:33:49.637980544Z INFO:app:autosave: saving key=Sreelakshmi  payload={'present': '11.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Sreelakshmi ', 'first_name': None}
+2025-11-26T16:35:05.789620966Z [2025-11-26 16:35:05,788] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:35:05.789652188Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:35:28.348635404Z [2025-11-26 16:35:28,348] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '80', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:35:28.348654505Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '80', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:36:49.235340098Z [2025-11-26 16:36:49,235] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': None, 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:36:49.235363029Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': None, 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:36:52.107253599Z [2025-11-26 16:36:52,107] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': None, 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:36:52.107274851Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': None, 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:36:59.469143226Z [2025-11-26 16:36:59,468] INFO in app: autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:36:59.469162637Z INFO:app:autosave: saving key=local payload={'present': '9', 'total': '20', 'target': '85', 'gender': 'female', 'username': None, 'first_name': None}
+2025-11-26T16:40:39.11645737Z [2025-11-26 16:40:39,116] INFO in app: autosave: saving key=Adhjk payload={'present': '30', 'total': '38', 'target': '85', 'gender': None, 'username': 'Adhjk', 'first_name': None}
+2025-11-26T16:40:39.118817505Z INFO:app:autosave: saving key=Adhjk payload={'present': '30', 'total': '38', 'target': '85', 'gender': None, 'username': 'Adhjk', 'first_name': None}
+2025-11-26T16:51:38.862007434Z [2025-11-26 16:51:38,861] INFO in app: autosave: saving key=230615 payload={'present': '10', 'total': '16', 'target': '75', 'gender': 'male', 'username': '230615', 'first_name': None}
+2025-11-26T16:51:38.862038936Z INFO:app:autosave: saving key=230615 payload={'present': '10', 'total': '16', 'target': '75', 'gender': 'male', 'username': '230615', 'first_name': None}
+2025-11-26T17:02:29.945748383Z [2025-11-26 17:02:29,945] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:02:29.945772954Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:02:31.175141398Z [2025-11-26 17:02:31,174] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:02:31.175156879Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:02:31.412143976Z [2025-11-26 17:02:31,411] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:02:31.412164547Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': None, 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:09.000594351Z [2025-11-26 17:03:09,000] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:09.000614602Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:10.214735414Z [2025-11-26 17:03:10,214] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:10.214759435Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:10.854174868Z [2025-11-26 17:03:10,853] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:10.854197719Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:11.070707029Z [2025-11-26 17:03:11,070] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:03:11.07072896Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:12:19.992629789Z [2025-11-26 17:12:19,985] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:12:19.992642789Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:12:21.668861935Z [2025-11-26 17:12:21,668] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:12:21.668881856Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '76', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:12:30.35938328Z [2025-11-26 17:12:30,359] INFO in app: autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '90', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:12:30.359401271Z INFO:app:autosave: saving key=Abhi payload={'present': '8.5', 'total': '16', 'target': '90', 'gender': 'male', 'username': 'Abhi', 'first_name': None}
+2025-11-26T17:19:03.59997796Z [2025-11-26 17:19:03,599] INFO in app: autosave: saving key=Shifa payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Shifa', 'first_name': None}
+2025-11-26T17:19:03.600010922Z INFO:app:autosave: saving key=Shifa payload={'present': '12.5', 'total': '16', 'target': '85', 'gender': None, 'username': 'Shifa', 'first_name': None}
+2025-11-27T02:53:51.420774297Z [2025-11-27 02:53:51,420] INFO in app: autosave: saving key=Rahna Moorkhan  payload={'present': '14.5', 'total': '16', 'target': '85', 'gender': 'female', 'username': 'Rahna Moorkhan ', 'first_name': None}
+2025-11-27T02:53:51.420793637Z INFO:app:autosave: saving key=Rahna Moorkhan  payload={'present': '14.5', 'total': '16', 'target': '85', 'gender': 'female', 'username': 'Rahna Moorkhan ', 'first_name': None}
+2025-11-27T02:54:14.614436297Z [2025-11-27 02:54:14,614] INFO in app: autosave: saving key=Rahna Moorkhan  payload={'present': '14.5', 'total': '16', 'target': '75', 'gender': 'female', 'username': 'Rahna Moorkhan ', 'first_name': None}
+2025-11-27T02:54:14.614474008Z INFO:app:autosave: saving key=Rahna Moorkhan  payload={'present': '14.5', 'total': '16', 'target': '75', 'gender': 'female', 'username': 'Rahna Moorkhan ', 'first_name': None}
+2025-11-27T04:08:16.706683488Z [2025-11-27 04:08:16,706] INFO in app: autosave: saving key=local payload={'present': '15', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-27T04:08:16.706706119Z INFO:app:autosave: saving key=local payload={'present': '15', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-27T04:08:18.200928217Z [2025-11-27 04:08:18,200] INFO in app: autosave: saving key=local payload={'present': '15', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-27T04:08:18.200947088Z INFO:app:autosave: saving key=local payload={'present': '15', 'total': '20', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-27T08:20:02.481778615Z [2025-11-27 08:20:02,481] INFO in app: autosave: saving key=local payload={'present': '19', 'total': '38', 'target': '75', 'gender': None, 'username': None, 'first_name': None}
+2025-11-27T08:20:02.481799266Z INFO:app:autosave: saving key=local payload={'present': '19', 'total': '38', 'target': '75', 'gender': None, 'username': None, 'first_name': None}
+2025-11-28T13:32:37.392875197Z [2025-11-28 13:32:37,392] INFO in app: autosave: saving key=local payload={'present': '54', 'total': '60', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-28T13:32:37.392894508Z INFO:app:autosave: saving key=local payload={'present': '54', 'total': '60', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-28T19:08:50.454525576Z [2025-11-28 19:08:50,454] INFO in app: autosave: saving key=local payload={'present': '5', 'total': '6', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-28T19:08:50.454547556Z INFO:app:autosave: saving key=local payload={'present': '5', 'total': '6', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-29T07:44:54.301635155Z [2025-11-29 07:44:54,301] INFO in app: autosave: saving key=local payload={'present': '13', 'total': '17', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-29T07:44:54.301668386Z INFO:app:autosave: saving key=local payload={'present': '13', 'total': '17', 'target': None, 'gender': None, 'username': None, 'first_name': None}
+2025-11-29T08:06:30.376072851Z [2025-11-29 08:06:30,375] INFO in app: autosave: saving key=Hello payload={'present': '13', 'total': '17', 'target': None, 'gender': None, 'username': 'Hello', 'first_name': None}
+2025-11-29T08:06:30.376093002Z INFO:app:autosave: saving key=Hello payload={'present': '13', 'total': '17', 'target': None, 'gender': None, 'username': 'Hello', 'first_name': None}
+2025-11-29T08:06:31.531750652Z [2025-11-29 08:06:31,531] INFO in app: autosave: saving key=Hello payload={'present': '13', 'total': '17', 'target': None, 'gender': None, 'username': 'Hello', 'first_name': None}
+2025-11-29T08:06:31.531772432Z INFO:app:autosave: saving key=Hello payload={'present': '13', 'total': '17', 'target': None, 'gender': None, 'username': 'Hello', 'first_name': None}
+2025-11-29T08:08:41.520174181Z [2025-11-29 08:08:41,520] INFO in app: autosave: saving key=Sayaf payload={'present': '13', 'total': '18', 'target': None, 'gender': None, 'username': 'Sayaf', 'first_name': None}
+2025-11-29T08:08:41.520193571Z INFO:app:autosave: saving key=Sayaf payload={'present': '13', 'total': '18', 'target': None, 'gender': None, 'username': 'Sayaf', 'first_name': None}
+2025-11-29T08:12:57.190875575Z [2025-11-29 08:12:57,190] INFO in app: autosave: saving key=Fayass payload={'present': '13', 'total': '18', 'target': None, 'gender': 'male', 'username': 'Fayass', 'first_name': None}
+2025-11-29T08:12:57.190894285Z INFO:app:autosave: saving key=Fayass payload={'present': '13', 'total': '18', 'target': None, 'gender': 'male', 'username': 'Fayass', 'first_name': None}
+2025-11-29T08:51:16.201669034Z [2025-11-29 08:51:16,201] INFO in app: autosave: saving key=Gayaysy payload={'present': '56', 'total': '59', 'target': None, 'gender': None, 'username': 'Gayaysy', 'first_name': None}
+2025-11-29T08:51:16.201715957Z INFO:app:autosave: saving key=Gayaysy payload={'present': '56', 'total': '59', 'target': None, 'gender': None, 'username': 'Gayaysy', 'first_name': None}
+2025-11-29T10:31:52.866802322Z [2025-11-29 10:31:52,866] INFO in app: autosave: saving key=Gimmy payload={'present': '75', 'total': '80', 'target': None, 'gender': None, 'username': 'Gimmy', 'first_name': None}
+2025-11-29T10:31:52.866844304Z INFO:app:autosave: saving key=Gimmy payload={'present': '75', 'total': '80', 'target': None, 'gender': None, 'username': 'Gimmy', 'first_name': None}
+2025-11-29T10:55:56.683967272Z [2025-11-29 10:55:56,683] INFO in app: autosave: saving key=Gimmy payload={'present': '75', 'total': '80', 'target': None, 'gender': None, 'username': 'Gimmy', 'first_name': None, 'vid': None}
+2025-11-29T10:55:56.683999294Z INFO:app:autosave: saving key=Gimmy payload={'present': '75', 'total': '80', 'target': None, 'gender': None, 'username': 'Gimmy', 'first_name': None, 'vid': None}

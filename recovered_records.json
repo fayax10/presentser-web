@@ -1,110 +1,10 @@
 {
-  "123456": {
-    "present": 6.5,
-    "total": 11,
-    "target": 75,
-    "gender": null,
-    "username": "student101",
-    "first_name": "Fayas"
-  },
-  "Fayas": {
-    "present": "11",
-    "total": "16",
-    "target": 75.0,
-    "gender": "male",
-    "username": "Fayas",
-    "first_name": null
-  },
-  "Shifaa kunjj": {
-    "present": 8.5,
-    "total": 11.0,
-    "gender": "female",
-    "target": 90.0
-  },
-  "Shifa": {
-    "present": "12.5",
-    "total": "16",
-    "target": "85",
-    "username": "Shifa"
-  },
-  "fayas_test": {
-    "present": 3.0,
-    "total": 10.0,
-    "target": 75.0,
-    "gender": "male",
-    "username": "fayas_test",
-    "first_name": null
-  },
-  "Fayaxx": {
-    "present": 7.0,
-    "total": 10.0,
-    "target": 75.0,
-    "gender": "male",
-    "username": "Fayaxx",
-    "first_name": null
-  },
-  "Fayaxie": {
-    "present": 6.5,
-    "total": 111.0,
-    "target": 75.0,
-    "gender": "male",
-    "username": "Fayaxie",
-    "first_name": null
-  },
   "local": {
     "present": "13",
     "total": "17",
-    "target": 75.0,
+    "target": null,
     "gender": null,
-    "username": "local",
-    "first_name": null
-  },
-  "Fayshssh": {
-    "present": 8.5,
-    "total": 13.0,
-    "target": 75.0,
-    "gender": "male",
-    "username": "Fayshssh",
-    "first_name": null
-  },
-  "sdsd": {
-    "present": 43.0,
-    "total": 23.0,
-    "target": 75.0,
-    "gender": null,
-    "username": "sdsd",
-    "first_name": null
-  },
-  "fayas": {
-    "present": 67.0,
-    "total": 67.0,
-    "target": 75.0,
-    "gender": null,
-    "username": "fayas",
-    "first_name": null
-  },
-  "fayss": {
-    "present": 67.0,
-    "total": 78.0,
-    "target": 75.0,
-    "gender": null,
-    "username": "fayss",
-    "first_name": null
-  },
-  "jgjg": {
-    "present": 67.0,
-    "total": 90.0,
-    "target": 75.0,
-    "gender": null,
-    "username": "jgjg",
-    "first_name": null
-  },
-  "fayass": {
-    "present": 56.0,
-    "total": 67.0,
-    "target": 75.0,
-    "gender": null,
-    "username": "fayass",
+    "username": null,
     "first_name": null
   },
   "Faheem": {
@@ -121,6 +21,14 @@
     "target": null,
     "gender": null,
     "username": "Shadiya",
+    "first_name": null
+  },
+  "Fayas": {
+    "present": "11",
+    "total": "16",
+    "target": null,
+    "gender": "male",
+    "username": "Fayas",
     "first_name": null
   },
   "Hai": {
@@ -193,6 +101,14 @@
     "target": "90",
     "gender": "male",
     "username": "Abhi",
+    "first_name": null
+  },
+  "Shifa": {
+    "present": "12.5",
+    "total": "16",
+    "target": "85",
+    "gender": null,
+    "username": "Shifa",
     "first_name": null
   },
   "Rahna Moorkhan": {
