@@ -19,66 +19,84 @@ GLOBAL_DEFAULT = 75.0
 # --- add this route to your app (place below other @app.route definitions) ---
 @app.route('/autosave', methods=['POST'])
 def autosave():
+    """
+    Robust autosave:
+      - prefers username, then vid (visitor id), then a generated local key
+      - performs partial updates (only sets fields provided)
+      - logs what changed
+    """
     try:
         payload = request.get_json(force=True) or {}
-    except Exception as e:
+    except Exception:
         app.logger.exception("autosave: invalid json")
-        return {"status":"bad_request"}, 400
+        return jsonify({"status":"bad_request"}), 400
 
-    # choose key: prefer username if present else 'local'
-    key = str(payload.get('username') or payload.get('first_name') or 'local')
+    # prefer a real username; fallback to visitor id (vid) if client sends it,
+    # otherwise generate a random local key so anonymous saves don't collide
+    key = None
+    if payload.get("username"):
+        key = str(payload["username"])
+    elif payload.get("vid"):
+        key = f"vid-{payload['vid']}"
+    else:
+        # short uuid to avoid extremely long keys
+        key = "local-" + str(uuid.uuid4())[:8]
 
-    # log incoming payload (helpful while debugging)
-    app.logger.info("autosave: saving key=%s payload=%s", key, {k: payload.get(k) for k in ("present","total","target","gender","username","first_name")})
+    app.logger.info("autosave: saving key=%s payload=%s", key,
+                    {k: payload.get(k) for k in ("present","total","target","gender","username","first_name","vid")})
 
-    # load existing data safely
+    # load existing data (safe)
     data = {}
     if DATA_PATH.exists():
         try:
             text = DATA_PATH.read_text(encoding='utf-8')
             data = json.loads(text) if text.strip() else {}
-        except Exception as e:
-            app.logger.exception("autosave: failed to read existing data, will continue with empty dict")
+        except Exception:
+            app.logger.exception("autosave: failed to read existing data, continuing with empty dict")
+            data = {}
 
-    # parse numbers robustly
-    try:
-        present = float(payload.get('present') or 0)
-    except Exception:
-        present = 0.0
-    try:
-        total = float(payload.get('total') or 0)
-    except Exception:
-        total = 0.0
+    # parse numeric values if present (do not overwrite when absent)
+    rec = data.get(key, {})
 
-    # prefer provided target, otherwise keep existing or default 75
-    try:
-        target_val = payload.get('target')
-        if target_val in (None, "", []):
-            target = data.get(key, {}).get('target', 75.0)
-        else:
-            target = float(target_val)
-    except Exception:
-        target = data.get(key, {}).get('target', 75.0)
+    if "present" in payload and payload.get("present") not in (None, ""):
+        try:
+            rec["present"] = float(payload.get("present", 0))
+        except Exception:
+            rec["present"] = payload.get("present")
 
-    # update data
-    data[key] = {
-        "present": present,
-        "total": total,
-        "target": target,
-        "gender": payload.get('gender'),
-        "username": payload.get('username') or key,
-        "first_name": payload.get('first_name')
-    }
+    if "total" in payload and payload.get("total") not in (None, ""):
+        try:
+            rec["total"] = float(payload.get("total", 0))
+        except Exception:
+            rec["total"] = payload.get("total")
 
-    # try to write the file, but log any failure
+    if "target" in payload and payload.get("target") not in (None, ""):
+        try:
+            rec["target"] = float(payload.get("target"))
+        except Exception:
+            rec["target"] = payload.get("target")
+
+    # non-numeric fields (only set when present)
+    if payload.get("gender") is not None:
+        rec["gender"] = payload.get("gender")
+    if payload.get("username"):
+        rec["username"] = payload.get("username")
+    if payload.get("first_name"):
+        rec["first_name"] = payload.get("first_name")
+    if payload.get("vid"):
+        rec["vid"] = payload.get("vid")
+
+    # update and save
+    data[key] = rec
     try:
         DATA_PATH.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding='utf-8')
         app.logger.info("autosave: wrote %d records to %s", len(data), DATA_PATH)
-    except Exception as e:
+    except Exception:
         app.logger.exception("autosave: Failed to save data")
-        return {"status":"error", "message": "write_failed"}, 500
+        return jsonify({"status":"error","message":"write_failed"}), 500
 
-    return {"status":"ok"}
+    return jsonify({"status":"ok", "key": key})
+
 def load_data():
     if DATA_PATH.exists():
         try:
@@ -350,6 +368,20 @@ def admin_ui():
         if req_key != ADMIN_KEY:
             return abort(403, "forbidden")
     return render_template("admin.html")
+
+@app.route('/debug/missing')
+def debug_missing():
+    # protect it by simple query param key (change or remove after debug)
+    if request.args.get("key") != "admin123":
+        return "unauthorized", 403
+
+    data = load_data()
+    missing = []
+    for k, rec in data.items():
+        missing_fields = [f for f in ("present","total","target") if rec.get(f) in (None, "", [])]
+        if missing_fields:
+            missing.append({"key": k, "missing": missing_fields, "record": rec})
+    return jsonify({"count": len(missing), "rows": missing})
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=False)
