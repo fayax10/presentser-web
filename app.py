@@ -272,7 +272,7 @@ from flask import render_template
 def view_data():
     # quick auth via ?key=admin123 (you can replace with session-based protection)
     key = request.args.get("key")
-    if key != "admin123":
+    if key != "adminfayax2004":
         return "Unauthorized", 403
 
     # load JSON file
@@ -373,7 +373,7 @@ def admin_ui():
 @app.route('/debug/missing')
 def debug_missing():
     # protect it by simple query param key (change or remove after debug)
-    if request.args.get("key") != "admin:fayax10":
+    if request.args.get("key") != "admin123":
         return "unauthorized", 403
 
     data = load_data()
