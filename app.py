@@ -384,5 +384,9 @@ def debug_missing():
             missing.append({"key": k, "missing": missing_fields, "record": rec})
     return jsonify({"count": len(missing), "rows": missing})
 
+@app.route("/health")
+def health():
+    return "OK"
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=False)
