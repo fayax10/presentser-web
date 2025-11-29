@@ -1,5 +1,5 @@
 {
-  "total_hits": 20,
+  "total_hits": 51,
   "visitors": {
     "vid-1764403362805-ek2unfl": {
       "first_seen": 1764403362.809935,
@@ -13,7 +13,7 @@
     },
     "1c70971c-035a-49ea-87c1-c66adabb49ed": {
       "first_seen": 1764409075.6264582,
-      "last_seen": 1764409075.626459,
+      "last_seen": 1764441489.956885,
       "path": "/"
     }
   }
