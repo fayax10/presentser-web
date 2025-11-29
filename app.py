@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from pathlib import Path
-import json
+import json, os, time
 import math
 import logging
+
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 # make DATA_PATH absolute and relative to this file (safe)
@@ -259,5 +260,56 @@ def get_json():
     with open("presentser_data.json") as f:
         return f.read()
 
+VISITS_FILE = "visits.json"
+# ensure file exists
+if not os.path.exists(VISITS_FILE):
+    with open(VISITS_FILE, "w") as f:
+        json.dump({"total_hits":0, "visitors":{}}, f)
+
+def load_visits():
+    with open(VISITS_FILE,"r") as f:
+        return json.load(f)
+
+def save_visits(d):
+    with open(VISITS_FILE,"w") as f:
+        json.dump(d, f, indent=2)
+
+@app.route("/track", methods=["POST"])
+def track():
+    payload = request.get_json(silent=True) or {}
+    vid = payload.get("vid")
+    path = payload.get("path", "")
+    if not vid:
+        return jsonify({"status":"no-vid"}), 400
+
+    data = load_visits()
+    data["total_hits"] = data.get("total_hits",0) + 1
+
+    # record visitor if new or update timestamp
+    visitors = data.setdefault("visitors",{})
+    visitors[vid] = { "first_seen": visitors.get(vid, {}).get("first_seen", time.time()),
+                      "last_seen": time.time(),
+                      "path": path }
+
+    save_visits(data)
+    return jsonify({"ok":True}), 200
+
+# Enhance your /stats (admin) to return unique and total
+def require_admin():
+    pass 
+
+
+@app.route("/stats")
+def stats():
+    require_admin()   # keep your existing admin protection
+    data = load_visits()
+    unique = len(data.get("visitors",{}))
+    total_hits = data.get("total_hits",0)
+    # you can still include presenter_data metrics
+    # presenters = load_data() as before...
+    return jsonify({
+      "unique_visitors": unique,
+      "total_hits": total_hits
+    })
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5002, debug=False)

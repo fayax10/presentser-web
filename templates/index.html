@@ -857,5 +857,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+  <script>
+// generate or read visitor id
+function visitorId(){
+  let id = localStorage.getItem('presentser_vid');
+  if(!id){
+    id = crypto.randomUUID ? crypto.randomUUID() : 'vid-' + Date.now() + '-' + Math.random().toString(36).slice(2,9);
+    localStorage.setItem('presentser_vid', id);
+  }
+  return id;
+}
+
+async function trackVisit(){
+  const vid = visitorId();
+  try{
+    await fetch('/track', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({vid, path: location.pathname})
+    });
+  }catch(e){
+    // ignore
+  }
+}
+
+// fire on page load
+window.addEventListener('load', trackVisit);
+</script>
 </body>
 </html>

@@ -51,8 +51,8 @@
     "first_name": null
   },
   "local": {
-    "present": 89.0,
-    "total": 90.0,
+    "present": 56.0,
+    "total": 78.0,
     "target": 75.0,
     "gender": null,
     "username": "local",
@@ -72,6 +72,30 @@
     "target": 75.0,
     "gender": null,
     "username": "sdsd",
+    "first_name": null
+  },
+  "fayas": {
+    "present": 67.0,
+    "total": 67.0,
+    "target": 75.0,
+    "gender": null,
+    "username": "fayas",
+    "first_name": null
+  },
+  "fayss": {
+    "present": 67.0,
+    "total": 78.0,
+    "target": 75.0,
+    "gender": null,
+    "username": "fayss",
+    "first_name": null
+  },
+  "jgjg": {
+    "present": 67.0,
+    "total": 90.0,
+    "target": 75.0,
+    "gender": null,
+    "username": "jgjg",
     "first_name": null
   }
 }
