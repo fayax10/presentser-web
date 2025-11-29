@@ -1,0 +1,65 @@
+:root{
+  --bg:#0f0b13;
+  --card:#16121a;
+  --muted:#9ca3b3;
+  --accent:#7c4dff;
+  --glass: rgba(255,255,255,0.03);
+  --text:#f7f7fb;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background: linear-gradient(180deg,#08050a 0%, #0f0b13 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+}
+.brand{font-weight:700; font-size:16px; color:var(--accent)}
+.container{padding:18px; max-width:1100px; margin:0 auto}
+
+.cards{display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-bottom:16px}
+.card{background:var(--card); padding:16px; border-radius:10px; box-shadow: 0 6px 18px rgba(2,2,10,0.4); border:1px solid rgba(255,255,255,0.02)}
+.card .label{color:var(--muted); font-size:13px}
+.card .value{font-size:22px; margin-top:6px; font-weight:700}
+
+.split{display:flex; gap:12px}
+.left{flex:1}
+.right{width:360px}
+
+.panel{background:var(--card); padding:14px; border-radius:12px; margin-bottom:12px; border:1px solid rgba(255,255,255,0.02)}
+.panel h3{margin:0 0 8px 0; font-size:14px; color:var(--muted)}
+
+.chart{display:flex; align-items:flex-end; gap:8px; height:110px; padding:6px; border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+.bar{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; margin:0 2px; background:transparent}
+.bar::before{}
+.bar-label{font-size:11px; color:var(--muted); margin-top:6px}
+
+.device-row{display:flex; gap:12px}
+.device-info{flex:1; background:var(--glass); padding:10px; border-radius:8px; text-align:center}
+.device-label{color:var(--muted); font-size:12px}
+.device-value{font-weight:700; margin-top:6px}
+
+.recent-list{list-style:none; padding:0; margin:0}
+.recent-list li{padding:8px 6px; border-bottom:1px dashed rgba(255,255,255,0.02); font-size:13px}
+.muted{color:var(--muted)}
+
+.raw{background:#0b0a0d; color:#d7d7db; padding:8px; border-radius:8px; max-height:180px; overflow:auto; font-size:12px}
+
+.footer{margin-top:18px; color:var(--muted); font-size:13px; text-align:center}
+
+/* small screens */
+@media(max-width:900px){
+  .cards{grid-template-columns: repeat(2,1fr)}
+  .split{flex-direction:column}
+  .right{width:auto}
+  .container{padding:12px}
+}
